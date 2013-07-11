@@ -80,7 +80,7 @@ class common {
 			owner   => $dotfiles::default_user,
 			group   => $dotfiles::default_user,
 			mode    => '0644',
-			content => '#!/bin/bash\nredshift -l 50.1:19.9 -m vidmode -g 0.8 &';
+			content => "#!/bin/bash\nredshift -l 50.1:19.9 -m vidmode -g 0.8";
 		"${dotfiles::home_dir}/.mplayer":
 			ensure   => directory,
 			recurse  => true,
