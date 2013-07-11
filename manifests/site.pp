@@ -8,7 +8,21 @@ node laptop inherits default {
 }
 
 node mobile inherits laptop {
-	# TODO brightness
+	file {
+		'/usr/bin/brightness':
+			ensure => file,
+			owner  => 'root',
+			group  => 'root',
+			mode   => '0755',
+			source => 'puppet:///modules/mobile/brightness';
+		'/etc/rc.local':
+			ensure => file,
+			owner  => 'root',
+			group  => 'root',
+			mode   => '0755',
+			source => 'puppet:///modules/mobile/rc.local';
+	}
+
 }
 node spectre inherits laptop {}
 
