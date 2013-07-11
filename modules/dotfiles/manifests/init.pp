@@ -40,12 +40,5 @@ class dotfiles {
 			group   => $default_user,
 			mode    => '0644',
 			source  => 'puppet:///modules/dotfiles/.vimrc';
-		"${home_dir}/.mplayer":
-			ensure   => directory,
-			recurse  => true,
-			owner    => $default_user,
-			group    => $default_user,
-			mode     => '0644',
-			source   => 'puppet:///modules/dotfiles/.mplayer';
 	}
 }

@@ -72,4 +72,14 @@ class common {
 			mode    => '0644',
 			content => 'manual';
 	}
+
+	file {
+		"${dotfiles::home_dir}/.mplayer":
+			ensure   => directory,
+			recurse  => true,
+			owner    => $dotfiles::default_user,
+			group    => $dotfiles::default_user,
+			mode     => '0644',
+			source   => 'puppet:///modules/common/.mplayer';
+	}
 }

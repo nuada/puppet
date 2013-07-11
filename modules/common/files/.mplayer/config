@@ -1,13 +1,9 @@
 [default]
-# Write your default config options here!
-
 cache = 8196
 monitoraspect = 16:9
 #vf=expand=0:-30:0:0
 
-ao = alsa
 vo = gl
-#vo = xv
 subfont-outline = 2
 
 subcp=cp1250
@@ -16,5 +12,5 @@ subcp=cp1250
 
 stop-xscreensaver=true
 
-#af=volume=10:1
+af=volume=10:1
 #af=volume=20:1
