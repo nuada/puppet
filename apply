@@ -9,7 +9,6 @@ if [[ ! $(dpkg -l puppet 2> /dev/null) ]]; then
 	rm -rf puppetlabs-release-${DISTRIB_CODENAME}.deb
 	apt-get update
 	apt-get -y install puppet
-	puppet module install puppetlabs/stdlib
 fi
 
 # If not running from repo clone it
