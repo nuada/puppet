@@ -1,8 +1,10 @@
 # TODO
+#  * rstudio FILE=`mktemp`; wget "$URL" -qO $FILE && sudo dpkg -i $FILE; rm $FILE
 #  * app-text/acroread
 #  * media-sound/spotify
 #  * net-im/skype
 #  * www-misc/profile-sync-daemon add-apt-repository ppa:graysky/utils
+#  * psd config
 #  * add-apt-repository ppa:bumblebee/stable
 #  * apt-get install bumblebee virtualgl linux-headers-generic
 
@@ -20,7 +22,6 @@ class common {
 		'gimp': ensure => present;
 		'git': ensure => present;
 		'gqview': ensure => present;
-		'gvim': ensure => present;
 		'ipcalc': ensure => present;
 		'ipython': ensure => present;
 		'keepassx': ensure => present;
@@ -39,12 +40,12 @@ class common {
 		'rar': ensure => present;
 		'r-base': ensure => present;
 		'redshift': ensure => present;
-		'rstudio': ensure => present;
 		'screen': ensure => present;
 		'scrot': ensure => present;
 		'thunderbird': ensure => present;
 		'traceroute': ensure => present;
 		'vagrant': ensure => present;
+		'vim-gtk': ensure => present;
 		'vim-puppet': ensure => present;
 		'vim': ensure => present;
 		'virtualbox': ensure => present;
