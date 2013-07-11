@@ -1,5 +1,5 @@
 #!/bin/bash
-# Usage: curl https://raw.github.com/nuada/puppet/apply | bash -s
+# Usage: curl https://raw.github.com/nuada/puppet/master/apply | bash -s
 
 if [[ ! $(dpkg -l puppet 2> /dev/null) ]]; then
 	. /etc/lsb-release
