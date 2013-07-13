@@ -1,16 +1,29 @@
 # TODO
-#  * rstudio FILE=`mktemp`; wget "$URL" -qO $FILE && sudo dpkg -i $FILE; rm $FILE
-#  * app-text/acroread
-#  * media-sound/spotify
-#  * net-im/skype
-#  * www-misc/profile-sync-daemon add-apt-repository ppa:graysky/utils
 #  * psd config
-#  * add-apt-repository ppa:bumblebee/stable
-#  * apt-get install bumblebee virtualgl linux-headers-generic
-
 class common {
+	class { 'apt': }
+
+	apt::ppa { 'ppa:graysky/utils': }
+
+	apt::ppa { 'ppa:bumblebee/stable': }
+
+	apt::source { 'ubuntu-partner':
+		location   => 'http://archive.canonical.com/ubuntu',
+		repos      => 'partner',
+	}
+
+	apt::source { 'spotify':
+		location   => 'http://repository.spotify.com',
+		release    => 'stable',
+		repos      => 'non-free',
+		key        => '94558F59',
+		key_server => 'keyserver.ubuntu.com',
+	}
+
 	package {
+		'acroread': ensure => present, require => Apt::Source['ubuntu-partner'];
 		'bind9utils': ensure => present;
+		'bumblebee': ensure => present, require => Apt::Ppa['ppa:bumblebee/stable'];
 		'calibre': ensure => present;
 		'chromium-browser': ensure => present;
 		'eclipse-cdt': ensure => present;
@@ -27,6 +40,7 @@ class common {
 		'keepassx': ensure => present;
 		'krdc': ensure => present;
 		'ktorrent': ensure => present;
+		'linux-headers-generic': ensure => present;
 		'localepurge': ensure => present;
 		'lsof': ensure => present;
 		'mercurial': ensure => present;
@@ -35,6 +49,7 @@ class common {
 		'nmap': ensure => present;
 		'okular': ensure => present;
 		'p7zip': ensure => present;
+		'profile-sync-daemon': ensure => present, require => Apt::Ppa['ppa:graysky/utils'];
 		'puppet-lint': ensure => present;
 		'python-virtualenv': ensure => present;
 		'rar': ensure => present;
@@ -42,6 +57,8 @@ class common {
 		'redshift': ensure => present;
 		'screen': ensure => present;
 		'scrot': ensure => present;
+		'skype': ensure => present, require => Apt::Source['ubuntu-partner'];
+		'spotify-client': ensure  => present, require => Apt::Source['spotify'];
 		'thunderbird': ensure => present;
 		'traceroute': ensure => present;
 		'vagrant': ensure => present;
@@ -49,7 +66,12 @@ class common {
 		'vim-puppet': ensure => present;
 		'vim': ensure => present;
 		'virtualbox': ensure => present;
+		'virtualgl': ensure => present, require => Apt::Ppa['ppa:bumblebee/stable'];
 		'wine': ensure => present;
+	}
+
+	common::deb { 'rstudio':
+		url     => 'http://download1.rstudio.org/rstudio-0.97.551-amd64.deb',
 	}
 
 	# Disable unused services
@@ -79,7 +101,7 @@ class common {
 			ensure  => file,
 			owner   => $dotfiles::default_user,
 			group   => $dotfiles::default_user,
-			mode    => '0644',
+			mode    => '0755',
 			content => "#!/bin/bash\nredshift -l 50.1:19.9 -m vidmode -g 0.8";
 		"${dotfiles::home_dir}/.mplayer":
 			ensure   => directory,
