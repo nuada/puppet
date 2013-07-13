@@ -1,5 +1,3 @@
-# TODO
-#  * psd config
 class common {
 	class { 'apt': }
 
@@ -112,5 +110,17 @@ class common {
 			group    => $dotfiles::default_user,
 			mode     => '0644',
 			source   => 'puppet:///modules/common/.mplayer';
+	}
+
+	# TODO add kate
+	$users = "${dotfiles::default_user}"
+	$browsers = 'chromium firefox'
+	file {
+		'/etc/psd.conf':
+			ensure  => file,
+			owner   => 'root',
+			group   => 'root',
+			mode    => '0644',
+			content => template('common/psd.conf.erb');
 	}
 }
