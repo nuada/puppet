@@ -40,6 +40,7 @@ class common {
 		'keepassx': ensure => present;
 		'krdc': ensure => present;
 		'ktorrent': ensure => present;
+		'libjpeg62': ensure => present;
 		'linux-headers-generic': ensure => present;
 		'localepurge': ensure => present;
 		'lsof': ensure => present;
@@ -72,6 +73,7 @@ class common {
 
 	common::deb { 'rstudio':
 		url     => 'http://download1.rstudio.org/rstudio-0.97.551-amd64.deb',
+		require => Package['libjpeg62'],
 	}
 
 	# Disable unused services
