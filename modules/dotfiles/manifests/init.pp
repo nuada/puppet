@@ -1,43 +1,43 @@
 class dotfiles {
-	$default_user = 'nuada'
-	$home_dir = "/home/$default_user"
+	$user = 'nuada'
+	$home = "/home/$user"
 
-	notice("Setting dotfiles for: $default_user in: ${home_dir}")
+	notice("Setting dotfiles for: $user in: ${home}")
 	file {
-		"${home_dir}/.bash_aliases":
+		"${home}/.bash_aliases":
 			ensure  => file,
-			owner   => $default_user,
-			group   => $default_user,
+			owner   => $user,
+			group   => $user,
 			mode    => '0644',
 			source  => 'puppet:///modules/dotfiles/.bash_aliases';
-		"${home_dir}/.bash_logout":
+		"${home}/.bash_logout":
 			ensure  => file,
-			owner   => $default_user,
-			group   => $default_user,
+			owner   => $user,
+			group   => $user,
 			mode    => '0644',
 			source  => 'puppet:///modules/dotfiles/.bash_logout';
-		"${home_dir}/.bash_profile":
+		"${home}/.bash_profile":
 			ensure  => file,
-			owner   => $default_user,
-			group   => $default_user,
+			owner   => $user,
+			group   => $user,
 			mode    => '0644',
 			source  => 'puppet:///modules/dotfiles/.bash_profile';
-		"${home_dir}/.bashrc":
+		"${home}/.bashrc":
 			ensure  => file,
-			owner   => $default_user,
-			group   => $default_user,
+			owner   => $user,
+			group   => $user,
 			mode    => '0644',
 			source  => 'puppet:///modules/dotfiles/.bashrc';
-		"${home_dir}/.hgrc":
+		"${home}/.hgrc":
 			ensure  => file,
-			owner   => $default_user,
-			group   => $default_user,
+			owner   => $user,
+			group   => $user,
 			mode    => '0644',
 			source  => 'puppet:///modules/dotfiles/.hgrc';
-		"${home_dir}/.vimrc":
+		"${home}/.vimrc":
 			ensure  => file,
-			owner   => $default_user,
-			group   => $default_user,
+			owner   => $user,
+			group   => $user,
 			mode    => '0644',
 			source  => 'puppet:///modules/dotfiles/.vimrc';
 	}

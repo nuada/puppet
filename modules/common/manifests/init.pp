@@ -97,23 +97,23 @@ class common {
 	}
 
 	file {
-		"${dotfiles::home_dir}/.kde/Autostart/redshift":
+		"${dotfiles::home}/.kde/Autostart/redshift":
 			ensure  => file,
-			owner   => $dotfiles::default_user,
-			group   => $dotfiles::default_user,
+			owner   => $dotfiles::user,
+			group   => $dotfiles::user,
 			mode    => '0755',
 			content => "#!/bin/bash\nredshift -l 50.1:19.9 -m vidmode -g 0.8";
-		"${dotfiles::home_dir}/.mplayer":
+		"${dotfiles::home}/.mplayer":
 			ensure   => directory,
 			recurse  => true,
-			owner    => $dotfiles::default_user,
-			group    => $dotfiles::default_user,
+			owner    => $dotfiles::user,
+			group    => $dotfiles::user,
 			mode     => '0644',
 			source   => 'puppet:///modules/common/.mplayer';
 	}
 
 	# TODO add kate
-	$users = "${dotfiles::default_user}"
+	$users = "${dotfiles::user}"
 	$browsers = 'chromium firefox'
 	file {
 		'/etc/psd.conf':
