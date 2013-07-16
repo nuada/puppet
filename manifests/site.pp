@@ -25,6 +25,6 @@ node spectre inherits laptop {}
 
 node vagrant {
 	class { 'dotfiles': 
-		user => 'vagrant';
+		user => 'vagrant',
 	}
 }
