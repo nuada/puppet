@@ -23,7 +23,7 @@ node mobile inherits laptop {
 }
 node spectre inherits laptop {}
 
-node vagrant {
+node /^vagrant/ {
 	class { 'dotfiles': 
 		user => 'vagrant',
 	}
