@@ -20,6 +20,13 @@ node mobile inherits laptop {
 			source => 'puppet:///modules/mobile/rc.local';
 	}
 
+	apt::ppa { 'ppa:bumblebee/stable': }
+	package {
+		'bumblebee': ensure => present, require => Apt::Ppa['ppa:bumblebee/stable'];
+		'linux-headers-generic': ensure => present;
+		'virtualgl': ensure => present, require => Apt::Ppa['ppa:bumblebee/stable'];
+	}
+
 }
 node spectre inherits laptop {}
 

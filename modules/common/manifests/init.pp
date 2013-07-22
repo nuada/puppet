@@ -3,8 +3,6 @@ class common {
 
 	apt::ppa { 'ppa:graysky/utils': }
 
-	apt::ppa { 'ppa:bumblebee/stable': }
-
 	apt::source { 'ubuntu-partner':
 		location   => 'http://archive.canonical.com/ubuntu',
 		repos      => 'partner',
@@ -21,7 +19,6 @@ class common {
 	package {
 		'acroread': ensure => present, require => Apt::Source['ubuntu-partner'];
 		'bind9utils': ensure => present;
-		'bumblebee': ensure => present, require => Apt::Ppa['ppa:bumblebee/stable'];
 		'calibre': ensure => present;
 		'chromium-browser': ensure => present;
 		'eclipse-cdt': ensure => present;
@@ -39,7 +36,6 @@ class common {
 		'krdc': ensure => present;
 		'ktorrent': ensure => present;
 		'libjpeg62': ensure => present;
-		'linux-headers-generic': ensure => present;
 		'localepurge': ensure => present;
 		'lsof': ensure => present;
 		'mercurial': ensure => present;
@@ -65,7 +61,6 @@ class common {
 		'vim-puppet': ensure => present;
 		'vim': ensure => present;
 		'virtualbox': ensure => present;
-		'virtualgl': ensure => present, require => Apt::Ppa['ppa:bumblebee/stable'];
 		'wine': ensure => present;
 	}
 
