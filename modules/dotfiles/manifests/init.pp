@@ -1,5 +1,6 @@
-class dotfiles ($user = 'nuada', $home = "/home/$user") {
-	notice("Setting dotfiles for: $user in: ${home}")
+class dotfiles ($user = 'nuada') {
+	$home = "/home/${user}"
+	notice("Setting dotfiles for: ${user} in: ${home}")
 	file {
 		"${home}/.bash_aliases":
 			ensure  => file,
