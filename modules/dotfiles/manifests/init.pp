@@ -1,5 +1,4 @@
-class dotfiles ($user = 'nuada') {
-	$home = "/home/${user}"
+class dotfiles ($user, $home) {
 	notice("Setting dotfiles for: ${user} in: ${home}")
 	file {
 		"${home}/.bash_aliases":

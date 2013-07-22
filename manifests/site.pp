@@ -1,5 +1,11 @@
-node laptop {
-	include dotfiles
+node default {
+	class { 'dotfiles':
+		user => $default_user,
+		home => $default_user_home,
+	}
+}
+
+node laptop inherits default {
 	include ssd
 	include common
 }
@@ -28,10 +34,5 @@ node mobile inherits laptop {
 	}
 
 }
-node spectre inherits laptop {}
 
-node /^vagrant/ {
-	class { 'dotfiles': 
-		user => 'vagrant',
-	}
-}
+node spectre inherits laptop {}
