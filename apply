@@ -23,4 +23,6 @@ fi
 
 export FACTER_default_user=${SUDO_USER}
 export FACTER_default_user_home=$(getent passwd ${SUDO_USER} | cut -d : -f 6)
+export FACTER_default_user_fullname=$(getent passwd nuada | cut -d : -f 5 | cut -d , -f 1)
+export FACTER_default_user_email=$(getent passwd nuada | cut -d : -f 5 | cut -d , -f 4)
 puppet apply --verbose --modulepath=/etc/puppet/modules:modules $* manifests/site.pp

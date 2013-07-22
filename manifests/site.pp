@@ -2,6 +2,8 @@ node default {
 	class { 'dotfiles':
 		user => $default_user,
 		home => $default_user_home,
+		fullname => $default_user_fullname,
+		email => $default_user_email,
 	}
 }
 

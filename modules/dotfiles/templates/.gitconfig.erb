@@ -1,0 +1,10 @@
+[user]
+	name = <%= @fullname %>
+	email = <%= @email %>
+
+[alias]
+	ci = commit
+	co = checkout
+	df = diff --color
+	record = ! sh -c '(git add -p -- $@ && git commit) || git reset' --
+	st = !git status | grep --color -E 'modified|$'

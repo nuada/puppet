@@ -1,4 +1,4 @@
-class dotfiles ($user, $home) {
+class dotfiles ($user, $home, $fullname, $email) {
 	notice("Setting dotfiles for: ${user} in: ${home}")
 	file {
 		"${home}/.bash_aliases":
@@ -37,5 +37,11 @@ class dotfiles ($user, $home) {
 			group   => $user,
 			mode    => '0644',
 			source  => 'puppet:///modules/dotfiles/.vimrc';
+		"${home}/.gitconfig":
+			ensure  => file,
+			owner   => $user,
+			group   => $user,
+			mode    => '0644',
+			content => template('dotfiles/.gitconfig.erb');
 	}
 }
