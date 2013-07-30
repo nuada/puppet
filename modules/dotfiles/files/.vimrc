@@ -69,3 +69,20 @@ autocmd BufNewFile * :call LoadFileTemplate()
 
 " Auto jump to line, grep style: some/path/file.ext:lineno:what_ever
 autocmd BufReadCmd *:[0-9]\+:* silent edit `=substitute(expand('<afile>'), ':[0-9]\+:.*', '', '')` | exe substitute(expand('<afile>'), '.*:\([0-9]\+\):.*', ':\1', '')
+
+function! Format()
+	if &filetype=='xml'
+		:%!xmllint --format -
+	elseif &filetype=='c'
+		:%!astyle -t3 -b -p -U
+	elseif &filetype=='javascript'
+		:%!js-beautify --indent-with-tabs --wrap-line-length 120 --file -
+	elseif &filetype=='css'
+		:%!css-beautify --indent-size 3 --file -
+	elseif &filetype=='html'
+		:%!html-beautify --indent-size 3 --wrap-line-length 120 --file -
+	else
+		echo "Formatting of this file type is not supported!"
+	endif
+endfunction
+map <F9> :call Format()<CR>
