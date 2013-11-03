@@ -27,9 +27,9 @@ class common {
 		'firefox-locale-pl': ensure => present;
 		'firefox': ensure => present;
 		'flashplugin-installer': ensure => present;
+		'geeqie': ensure => present;
 		'gimp': ensure => present;
 		'git': ensure => present;
-		'gqview': ensure => present;
 		'ipcalc': ensure => present;
 		'ipython': ensure => present;
 		'keepassx': ensure => present;
