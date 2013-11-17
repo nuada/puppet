@@ -35,6 +35,10 @@ node mobile inherits laptop {
 		'virtualgl': ensure => present, require => Apt::Ppa['ppa:bumblebee/stable'];
 	}
 
+	apt::ppa { 'ppa:tuxpoldo/btsync': }
+	package {
+		'btsync': ensure => present, require => Apt::Ppa['ppa:tuxpoldo/btsync'];
+	}
 }
 
 node spectre inherits laptop {}
